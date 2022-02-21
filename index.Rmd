@@ -1,0 +1,327 @@
+---
+title: "Fresh Start Clubhouse | Covid Tracker"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(ggmap)
+
+# Read in the data
+data <- read.csv('final_data.csv')
+```
+
+Clubhouse Benchmarks {data-icon="ion-android-home"}
+===
+Row {data-width=150}
+-----------------------------------------------------------------------
+
+### Total Recent Cases
+
+```{r}
+recent_cases <- tail(data$Weekly.Cases, n=1)
+
+if(recent_cases>=500){
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 0", color = "rgb(244,204,204)")
+} else if (recent_cases<500 & recent_cases>=250) {
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 1", color = "rgb(252,229,205)")
+} else if (recent_cases<250 & recent_cases>=100) {
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 2", color = "rgb(255,242,204)")
+} else if (recent_cases<100 & recent_cases>=50) {
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 3", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4", color = "rgb(201,218,248)")}
+```
+
+### Total Recent Cases
+
+```{r}
+recent_pos = tail(data$Average.Cases, n=1)
+
+if(recent_pos>=70){
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 0", color = "rgb(244,204,204)")
+} else if (recent_pos<70 & recent_pos>=50) {
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 1", color = "rgb(252,229,205)")
+} else if (recent_pos<50 & recent_pos>=30) {
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 2", color = "rgb(255,242,204)")
+} else if (recent_pos<30 & recent_pos>=10) {
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 3", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 4", color = "rgb(201,218,248)")}
+```
+
+### Total Hospitalizations
+
+```{r}
+recent_hosp = tail(data$Weekly.Hospitalizations, n=1)
+
+if(recent_hosp>=40){
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 0", color = "rgb(244,204,204)")
+} else if (recent_hosp<40 & recent_hosp>=25) {
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 1", color = "rgb(252,229,205)")
+} else if (recent_hosp<25 & recent_hosp>=15) {
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 2", color = "rgb(255,242,204)")
+} else if (recent_hosp<15 & recent_hosp>=5) {
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 3", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 4", color = "rgb(201,218,248)")}
+```
+
+### New Confirmed Deaths
+
+```{r}
+recent_deaths = tail(data$Weekly.Deaths, n=1)
+
+if(recent_deaths>=40){
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 0", color = "rgb(244,204,204)")
+} else if (recent_deaths<40 & recent_deaths>=25) {
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 1", color = "rgb(252,229,205)")
+} else if (recent_deaths<25 & recent_deaths>=15) {
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 2", color = "rgb(255,242,204)")
+} else if (recent_deaths<15 & recent_deaths>=5) {
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 3", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 4", color = "rgb(201,218,248)")}
+```
+
+Row
+-----------------------------------------------------------------------
+
+### New Confirmed COVID-19 Cases
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_cases <- plot_ly(data, x = ~Date, y = ~Weekly.Cases, type = 'scatter', mode = 'lines')
+fig_cases <- layout(fig_cases,
+              xaxis = list(title = '', showgrid = FALSE),
+              yaxis = list(title = '', showgrid = FALSE),
+              shapes = list(
+                list(type = "rect",
+                     fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 500, y1 = max(data$Weekly.Cases), yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 250, y1 = 500, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 100, y1 = 250, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 50, y1 = 100, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 0, y1 = 50, yref = "y")))
+fig_cases
+```
+
+### Positive COVID-19 Test Results
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_tests <- plot_ly(data, x = ~Date, y = ~Average.Cases, type = 'scatter', mode = 'lines')
+fig_tests <- layout(fig_tests,
+                    xaxis = list(title = '', showgrid = FALSE),
+                    yaxis = list(title = '', showgrid = FALSE),
+                    shapes = list(
+                      list(type = "rect",
+                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 70, y1 = max(data$Average.Cases), yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 50, y1 = 70, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 30, y1 = 50, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 10, y1 = 30, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 0, y1 = 10, yref = "y")))
+fig_tests
+```
+
+### New COVID-19 Hospital Admissions
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_hospitals <- plot_ly(data, x = ~Date, y = ~Weekly.Hospitalizations, type = 'scatter', mode = 'lines')
+fig_hospitals <- layout(fig_hospitals,
+                    xaxis = list(title = '', showgrid = FALSE),
+                    yaxis = list(title = '', showgrid = FALSE),
+                    shapes = list(
+                      list(type = "rect",
+                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 40, y1 = max(data$Weekly.Hospitalizations), yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 25, y1 = 40, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 15, y1 = 25, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 5, y1 = 15, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 0, y1 = 5, yref = "y")))
+fig_hospitals
+```
+
+### New Confirmed COVID-19 Deaths
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_deaths <- plot_ly(data, x = ~Date, y = ~Weekly.Deaths, type = 'scatter', mode = 'lines')
+fig_deaths <- layout(fig_deaths,
+                        xaxis = list(title = '', showgrid = FALSE),
+                        yaxis = list(title = '', showgrid = FALSE),
+                        shapes = list(
+                          list(type = "rect",
+                               fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                               x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                               y0 = 10, y1 = max(data$Weekly.Deaths), yref = "y"),
+                          list(type = "rect",
+                               fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                               x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                               y0 = 5, y1 = 10, yref = "y"),
+                          list(type = "rect",
+                               fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                               x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                               y0 = 3, y1 = 5, yref = "y"),
+                          list(type = "rect",
+                               fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                               x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                               y0 = 2, y1 = 3, yref = "y"),
+                          list(type = "rect",
+                               fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                               x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                               y0 = 0, y1 = 2, yref = "y")))
+fig_deaths
+```
+
+State Benchmarks {data-icon="ion-android-globe"}
+===
+Row {data-width=350}
+-----------------------------------------------------------------------
+
+### Daily Cases per Million
+
+```{r}
+daily_cases <- round(tail(data$Avg.Cases.MI, n=1),0)
+
+if(daily_cases>=70){
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: D", color = "rgb(244,204,204)")
+} else if (daily_cases<70 & daily_cases>=40) {
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: C", color = "rgb(252,229,205)")
+} else if (daily_cases<40 & daily_cases>=20) {
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: B", color = "rgb(255,242,204)")
+} else if (daily_cases<20 & daily_cases>=7) {
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: A", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: Low", color = "rgb(201,218,248)")}
+```
+
+### Daily Positive Test Rate Percentage
+
+```{r}
+daily_pos <- round(tail(data$Avg.Positives.Rate, n=1),2)
+
+if(daily_pos>=.15){
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: D", color = "rgb(244,204,204)")
+} else if (daily_pos<.15 & daily_pos>=.10) {
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: C", color = "rgb(252,229,205)")
+} else if (daily_pos<.10 & daily_pos>=.07) {
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: B", color = "rgb(255,242,204)")
+} else if (daily_pos<.07 & daily_pos>=.03) {
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: A", color = "rgb(217,234,211)")
+} else {
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low", color = "rgb(201,218,248)")}
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Daily Cases per Million
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_cases_mi <- plot_ly(data, x = ~Date, y = ~Avg.Cases.MI, type = 'scatter', mode = 'lines')
+fig_cases_mi <- layout(fig_cases_mi,
+              xaxis = list(title = '', showgrid = FALSE),
+              yaxis = list(title = '', showgrid = FALSE),
+              shapes = list(
+                list(type = "rect",
+                     fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 70, y1 = max(data$Avg.Cases.MI), yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 40, y1 = 70, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 20, y1 = 40, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 7, y1 = 20, yref = "y"),
+                list(type = "rect",
+                     fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                     x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                     y0 = 0, y1 = 7, yref = "y")))
+fig_cases_mi
+```
+
+### Daily Positive Test Rate
+```{r}
+data$Date <- as.Date(data$Date)
+
+fig_pos_mi <- plot_ly(data, x = ~Date, y = ~Avg.Positives.Rate, type = 'scatter', mode = 'lines')
+fig_pos_mi <- layout(fig_pos_mi,
+                    xaxis = list(title = '', showgrid = FALSE),
+                    yaxis = list(title = '', showgrid = FALSE),
+                    shapes = list(
+                      list(type = "rect",
+                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = .15, y1 = max(data$Avg.Positives.Rate), yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = .10, y1 = .15, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = .07, y1 = .10, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = .03, y1 = .07, yref = "y"),
+                      list(type = "rect",
+                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
+                           y0 = 0, y1 = .03, yref = "y")))
+fig_pos_mi
+```
