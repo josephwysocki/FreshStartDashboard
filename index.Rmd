@@ -84,13 +84,13 @@ if(recent_hosp>=40){
 ```{r}
 recent_deaths = tail(data$Weekly.Deaths, n=1)
 
-if(recent_deaths>=40){
+if(recent_deaths>=10){
   valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 0", color = red_color)
-} else if (recent_deaths<40 & recent_deaths>=25) {
+} else if (recent_deaths<10 & recent_deaths>=5) {
   valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 1", color = orange_color)
-} else if (recent_deaths<25 & recent_deaths>=15) {
+} else if (recent_deaths<5 & recent_deaths>=3) {
   valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 2", color = yellow_color)
-} else if (recent_deaths<15 & recent_deaths>=5) {
+} else if (recent_deaths<3 & recent_deaths>=2) {
   valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 3", color = green_color)
 } else {
   valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 4", color = blue_color)}
