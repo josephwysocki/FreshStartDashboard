@@ -14,6 +14,13 @@ library(ggmap)
 
 # Read in the data
 data <- read.csv('final_data.csv')
+
+# set Color Values
+red_color <- "#D46C4E"
+orange_color <- "#F9AD6A"
+yellow_color <- "#F9E07F"
+green_color <- "#43978D"
+blue_color <- "#264D59"
 ```
 
 Clubhouse Benchmarks {data-icon="ion-android-home"}
@@ -27,15 +34,15 @@ Row {data-width=150}
 recent_cases <- tail(data$Weekly.Cases, n=1)
 
 if(recent_cases>=500){
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 0", color = "rgb(244,204,204)")
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 0", color = red_color)
 } else if (recent_cases<500 & recent_cases>=250) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 1", color = "rgb(252,229,205)")
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 1", color = orange_color)
 } else if (recent_cases<250 & recent_cases>=100) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 2", color = "rgb(255,242,204)")
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 2", color = yellow_color)
 } else if (recent_cases<100 & recent_cases>=50) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 3", color = "rgb(217,234,211)")
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 3", color = green_color)
 } else {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4", color = "rgb(201,218,248)")}
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4", color = blue_color)}
 ```
 
 ### Total Recent Cases
@@ -44,15 +51,15 @@ if(recent_cases>=500){
 recent_pos = tail(data$Average.Cases, n=1)
 
 if(recent_pos>=70){
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 0", color = "rgb(244,204,204)")
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 0", color = red_color)
 } else if (recent_pos<70 & recent_pos>=50) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 1", color = "rgb(252,229,205)")
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 1", color = orange_color)
 } else if (recent_pos<50 & recent_pos>=30) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 2", color = "rgb(255,242,204)")
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 2", color = yellow_color)
 } else if (recent_pos<30 & recent_pos>=10) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 3", color = "rgb(217,234,211)")
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 3", color = green_color)
 } else {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 4", color = "rgb(201,218,248)")}
+  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 4", color = blue_color)}
 ```
 
 ### Total Hospitalizations
@@ -61,15 +68,15 @@ if(recent_pos>=70){
 recent_hosp = tail(data$Weekly.Hospitalizations, n=1)
 
 if(recent_hosp>=40){
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 0", color = "rgb(244,204,204)")
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 0", color = red_color)
 } else if (recent_hosp<40 & recent_hosp>=25) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 1", color = "rgb(252,229,205)")
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 1", color = orange_color)
 } else if (recent_hosp<25 & recent_hosp>=15) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 2", color = "rgb(255,242,204)")
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 2", color = yellow_color)
 } else if (recent_hosp<15 & recent_hosp>=5) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 3", color = "rgb(217,234,211)")
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 3", color = green_color)
 } else {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 4", color = "rgb(201,218,248)")}
+  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 4", color = blue_color)}
 ```
 
 ### New Confirmed Deaths
@@ -78,15 +85,15 @@ if(recent_hosp>=40){
 recent_deaths = tail(data$Weekly.Deaths, n=1)
 
 if(recent_deaths>=40){
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 0", color = "rgb(244,204,204)")
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 0", color = red_color)
 } else if (recent_deaths<40 & recent_deaths>=25) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 1", color = "rgb(252,229,205)")
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 1", color = orange_color)
 } else if (recent_deaths<25 & recent_deaths>=15) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 2", color = "rgb(255,242,204)")
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 2", color = yellow_color)
 } else if (recent_deaths<15 & recent_deaths>=5) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 3", color = "rgb(217,234,211)")
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 3", color = green_color)
 } else {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 4", color = "rgb(201,218,248)")}
+  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 4", color = blue_color)}
 ```
 
 Row
@@ -102,23 +109,23 @@ fig_cases <- layout(fig_cases,
               yaxis = list(title = '', showgrid = FALSE),
               shapes = list(
                 list(type = "rect",
-                     fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                     fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 500, y1 = max(data$Weekly.Cases), yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                     fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 250, y1 = 500, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                     fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 100, y1 = 250, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                     fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 50, y1 = 100, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                     fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 0, y1 = 50, yref = "y")))
 fig_cases
@@ -134,23 +141,23 @@ fig_tests <- layout(fig_tests,
                     yaxis = list(title = '', showgrid = FALSE),
                     shapes = list(
                       list(type = "rect",
-                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 70, y1 = max(data$Average.Cases), yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 50, y1 = 70, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 30, y1 = 50, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 10, y1 = 30, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 0, y1 = 10, yref = "y")))
 fig_tests
@@ -166,23 +173,23 @@ fig_hospitals <- layout(fig_hospitals,
                     yaxis = list(title = '', showgrid = FALSE),
                     shapes = list(
                       list(type = "rect",
-                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 40, y1 = max(data$Weekly.Hospitalizations), yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 25, y1 = 40, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 15, y1 = 25, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 5, y1 = 15, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 0, y1 = 5, yref = "y")))
 fig_hospitals
@@ -198,23 +205,23 @@ fig_deaths <- layout(fig_deaths,
                         yaxis = list(title = '', showgrid = FALSE),
                         shapes = list(
                           list(type = "rect",
-                               fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                               fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                                x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                                y0 = 10, y1 = max(data$Weekly.Deaths), yref = "y"),
                           list(type = "rect",
-                               fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                               fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                                x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                                y0 = 5, y1 = 10, yref = "y"),
                           list(type = "rect",
-                               fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                               fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                                x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                                y0 = 3, y1 = 5, yref = "y"),
                           list(type = "rect",
-                               fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                               fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                                x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                                y0 = 2, y1 = 3, yref = "y"),
                           list(type = "rect",
-                               fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                               fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                                x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                                y0 = 0, y1 = 2, yref = "y")))
 fig_deaths
@@ -231,15 +238,15 @@ Row {data-width=350}
 daily_cases <- round(tail(data$Avg.Cases.MI, n=1),0)
 
 if(daily_cases>=70){
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: D", color = "rgb(244,204,204)")
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: D", color = red_color)
 } else if (daily_cases<70 & daily_cases>=40) {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: C", color = "rgb(252,229,205)")
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: C", color = orange_color)
 } else if (daily_cases<40 & daily_cases>=20) {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: B", color = "rgb(255,242,204)")
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: B", color = yellow_color)
 } else if (daily_cases<20 & daily_cases>=7) {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: A", color = "rgb(217,234,211)")
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: A", color = green_color)
 } else {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: Low", color = "rgb(201,218,248)")}
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: Low", color = blue_color)}
 ```
 
 ### Daily Positive Test Rate Percentage
@@ -248,15 +255,15 @@ if(daily_cases>=70){
 daily_pos <- round(tail(data$Avg.Positives.Rate, n=1),2)
 
 if(daily_pos>=.15){
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: D", color = "rgb(244,204,204)")
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: D", color = red_color)
 } else if (daily_pos<.15 & daily_pos>=.10) {
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: C", color = "rgb(252,229,205)")
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: C", color = orange_color)
 } else if (daily_pos<.10 & daily_pos>=.07) {
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: B", color = "rgb(255,242,204)")
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: B", color = yellow_color)
 } else if (daily_pos<.07 & daily_pos>=.03) {
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: A", color = "rgb(217,234,211)")
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: A", color = green_color)
 } else {
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low", color = "rgb(201,218,248)")}
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low", color = blue_color)}
 ```
 
 Row
@@ -272,23 +279,23 @@ fig_cases_mi <- layout(fig_cases_mi,
               yaxis = list(title = '', showgrid = FALSE),
               shapes = list(
                 list(type = "rect",
-                     fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                     fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 70, y1 = max(data$Avg.Cases.MI), yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                     fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 40, y1 = 70, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                     fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 20, y1 = 40, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                     fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 7, y1 = 20, yref = "y"),
                 list(type = "rect",
-                     fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                     fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                      x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                      y0 = 0, y1 = 7, yref = "y")))
 fig_cases_mi
@@ -304,23 +311,23 @@ fig_pos_mi <- layout(fig_pos_mi,
                     yaxis = list(title = '', showgrid = FALSE),
                     shapes = list(
                       list(type = "rect",
-                           fillcolor = "rgb(244,204,204)", line = list(color = "rgb(244,204,204)"), opacity = 0.3,
+                           fillcolor = red_color, line = list(color = red_color), opacity = 0.3,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = .15, y1 = max(data$Avg.Positives.Rate), yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(252,229,205)", line = list(color = "rgb(252,229,205)"), opacity = 0.2,
+                           fillcolor = orange_color, line = list(color = orange_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = .10, y1 = .15, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(255,242,204)", line = list(color = "rgb(255,242,204)"), opacity = 0.2,
+                           fillcolor = yellow_color, line = list(color = yellow_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = .07, y1 = .10, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(217,234,211)", line = list(color = "rgb(217,234,211)"), opacity = 0.2,
+                           fillcolor = green_color, line = list(color = green_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = .03, y1 = .07, yref = "y"),
                       list(type = "rect",
-                           fillcolor = "rgb(201,218,248)", line = list(color = "rgb(201,218,248)"), opacity = 0.2,
+                           fillcolor = blue_color, line = list(color = blue_color), opacity = 0.2,
                            x0 = head(data$Date, n=1), x1 = tail(data$Date, n=1), xref = "x",
                            y0 = 0, y1 = .03, yref = "y")))
 fig_pos_mi
