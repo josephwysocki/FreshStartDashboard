@@ -1,0 +1,14 @@
+/* Set font color of inactive tab to green */
+.nav-tabs-custom .nav-tabs > li > a {
+  color: green;
+} 
+
+/* Set font color of active tab to red */
+.nav-tabs-custom .nav-tabs > li.active > a {
+  color: red;
+} 
+
+/* To set color on hover */
+.nav-tabs-custom .nav-tabs > li.active > a:hover {
+  color: purple;
+}
