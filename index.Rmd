@@ -1,10 +1,24 @@
 ---
-title: "Fresh Start Clubhouse | Covid Tracker"
+title: "."
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
     vertical_layout: fill
+    logo: transparent_logo_small_2.png
+    
 ---
+<style>                     
+.navbar {
+  background-color:#2A254B;
+  #border-color:white;
+}
+.navbar-brand {
+color:#2A254B!important;
+}
+.main-header.logo {
+  padding: 250px 250px;
+}
+</style>
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
