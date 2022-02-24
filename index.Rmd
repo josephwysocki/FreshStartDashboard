@@ -267,14 +267,15 @@ if(daily_cases>=70){
 
 ```{r}
 daily_pos <- round(tail(data$Avg.Positives.Rate, n=1),2)
+daily_pos_noround <- tail(data$Avg.Positives.Rate, n=1)
 
-if(daily_pos>=.15){
+if(daily_pos_noround>=.15){
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: D", color = red_color)
-} else if (daily_pos<.15 & daily_pos>=.10) {
+} else if (daily_pos_noround<.15 & daily_pos_noround>=.10) {
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: C", color = orange_color)
-} else if (daily_pos<.10 & daily_pos>=.07) {
+} else if (daily_pos_noround<.10 & daily_pos_noround>=.07) {
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: B", color = yellow_color)
-} else if (daily_pos<.07 & daily_pos>=.03) {
+} else if (daily_pos_noround<.07 & daily_pos_noround>=.03) {
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: A", color = green_color)
 } else {
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low", color = blue_color)}
