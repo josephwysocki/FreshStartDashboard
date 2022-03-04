@@ -48,13 +48,13 @@ Row {data-width=150}
 recent_cases <- tail(data$Weekly.Cases, n=1)
 
 if(recent_cases>=500){
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
+  valueBox(value = round(recent_cases,0),icon = "ion-medkit",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
 } else if (recent_cases<500 & recent_cases>=250) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
+  valueBox(value = round(recent_cases,0),icon = "ion-medkit",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
 } else if (recent_cases<250 & recent_cases>=100) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
+  valueBox(value = round(recent_cases,0),icon = "ion-medkit",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
 } else if (recent_cases<100 & recent_cases>=50) {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 3, Indoor with Masks", color = green_color)
+  valueBox(value = round(recent_cases,0),icon = "ion-medkit",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
   valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4", color = blue_color)}
 ```
@@ -65,15 +65,15 @@ if(recent_cases>=500){
 recent_pos = tail(data$Average.Cases, n=1)
 
 if(recent_pos>=70){
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
 } else if (recent_pos<70 & recent_pos>=50) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
 } else if (recent_pos<50 & recent_pos>=30) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
 } else if (recent_pos<30 & recent_pos>=10) {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 3, Indoor with Masks", color = green_color)
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = recent_pos,icon = "ion-person-add",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
 ```
 
 ### Total Hospitalizations
@@ -82,15 +82,15 @@ if(recent_pos>=70){
 recent_hosp = tail(data$Weekly.Hospitalizations, n=1)
 
 if(recent_hosp>=40){
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
 } else if (recent_hosp<40 & recent_hosp>=25) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
 } else if (recent_hosp<25 & recent_hosp>=15) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
 } else if (recent_hosp<15 & recent_hosp>=5) {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 3, Indoor with Masks", color = green_color)
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = recent_hosp,icon = "ion-heart",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
 ```
 
 ### New Confirmed Deaths
@@ -99,15 +99,15 @@ if(recent_hosp>=40){
 recent_deaths = tail(data$Weekly.Deaths, n=1)
 
 if(recent_deaths>=10){
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 0, Virtual Clubhouse", color = red_color)
 } else if (recent_deaths<10 & recent_deaths>=5) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 1, Outdoor without Crowds", color = orange_color)
 } else if (recent_deaths<5 & recent_deaths>=3) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 2, Outdoor with Crowds", color = yellow_color)
 } else if (recent_deaths<3 & recent_deaths>=2) {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 3, Indoor with Masks", color = green_color)
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = recent_deaths,icon = "ion-ios-pulse-strong",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
 ```
 
 Row
