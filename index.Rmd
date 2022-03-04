@@ -254,9 +254,9 @@ daily_cases <- round(tail(data$Avg.Cases.MI, n=1),0)
 if(daily_cases>=70){
   valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: D, Virtual Clubhouse", color = red_color)
 } else if (daily_cases<70 & daily_cases>=40) {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: C, Outdoor with Crowds", color = orange_color)
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: C, Outdoor without Crowds", color = orange_color)
 } else if (daily_cases<40 & daily_cases>=20) {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: B, Outdoor without Crowds", color = yellow_color)
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: B, Outdoor with Crowds", color = yellow_color)
 } else if (daily_cases<20 & daily_cases>=7) {
   valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: A, Indoor with Masks", color = green_color)
 } else {
