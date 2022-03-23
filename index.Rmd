@@ -56,7 +56,7 @@ if(recent_cases>=500){
 } else if (recent_cases<100 & recent_cases>=50) {
   valueBox(value = round(recent_cases,0),icon = "ion-medkit",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4", color = blue_color)}
+  valueBox(value = recent_cases,icon = "ion-medkit",caption = "Phase: 4, Indoor with Masks", color = blue_color)}
 ```
 
 ### Total Recent Cases
@@ -73,7 +73,7 @@ if(recent_pos>=70){
 } else if (recent_pos<30 & recent_pos>=10) {
   valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_pos,0),icon = "ion-person-add",caption = "Phase: 4, Indoor with Masks", color = blue_color)}
 ```
 
 ### Total Hospitalizations
@@ -90,7 +90,7 @@ if(recent_hosp>=40){
 } else if (recent_hosp<15 & recent_hosp>=5) {
   valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_hosp,0),icon = "ion-heart",caption = "Phase: 4, Indoor with Masks", color = blue_color)}
 ```
 
 ### New Confirmed Deaths
@@ -107,7 +107,7 @@ if(recent_deaths>=10){
 } else if (recent_deaths<3 & recent_deaths>=2) {
   valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 3, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 4, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = round(recent_deaths,0),icon = "ion-ios-pulse-strong",caption = "Phase: 4, Indoor with Masks", color = blue_color)}
 ```
 
 Row
@@ -260,7 +260,7 @@ if(daily_cases>=70){
 } else if (daily_cases<20 & daily_cases>=7) {
   valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: A, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: Low, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = daily_cases,icon = "ion-medkit",caption = "Risk Threshold: Low, Indoor with Masks", color = blue_color)}
 ```
 
 ### Daily Positive Test Rate Percentage
@@ -278,7 +278,7 @@ if(daily_pos_noround>=.15){
 } else if (daily_pos_noround<.07 & daily_pos_noround>=.03) {
   valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: A, Indoor with Masks", color = green_color)
 } else {
-  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low, Indoor (masks optional)", color = blue_color)}
+  valueBox(value = daily_pos,icon = "ion-person-add",caption = "Risk Threshold: Low, Indoor with Masks", color = blue_color)}
 ```
 
 Row
